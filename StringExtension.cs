@@ -6,19 +6,31 @@ namespace PadawansTask7
     {
         public static void OrderStringsByLength(string[] array)
         {
-            string temp = "";
-            for (int i = 0; i < array.Length; i++)
+            if (array == null)
             {
-                for (int y = i + 1; y < array.Length; y++)
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                string temp = "";
+                for (int i = 0; i < array.Length; i++)
                 {
-                    if (array[i].Length > array[y].Length)
+                    for (int y = i + 1; y < array.Length; y++)
                     {
-                        temp = array[i];
-                        array[i] = array[y];
-                        array[y] = temp;
+                        if (array[i] == null || array[y] == null)
+                        {
+                            throw new ArgumentNullException();
+                        }
+                        else if (array[i].Length > array[y].Length)
+                        {
+                            temp = array[i];
+                            array[i] = array[y];
+                            array[y] = temp;
+                        }
                     }
                 }
             }
         }
     }
 }
+
